@@ -1,0 +1,28 @@
+{
+  "name": "react-utils",
+  "description": "",
+  "main": "dist/index.js",
+  "authors": [
+    "siddick <siddick@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/components",
+    "lib",
+    "example",
+    "tasks",
+    "package.json"
+  ],
+  "dependencies": {
+    "react": "^0.14",
+    "react-router": "https://cdnjs.cloudflare.com/ajax/libs/react-router/2.0.0/ReactRouter.js"
+  }
+}

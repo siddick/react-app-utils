@@ -4,17 +4,17 @@ React Utils
 Usage:
 ------
 
+```sh
+npm install react-utils react react-router --save
+```
+
+Server side rendering:
+
 ```js
-var reactUtils = require('react-utils'),
-    app = require('express')();
-
-require("babel-register")({
-    presets: ["react"]
-});
-
 app.use(new reactUtils.reactRender({
-    layout: require('../public/views/layout'),
-    routes: require('../public/views/routes')
+   src: 'views/',
+   layout: 'layout',
+   routes: 'routes'
 }));
 
 app.get('/', function (req, res) {
