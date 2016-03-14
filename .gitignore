@@ -2,3 +2,4 @@ node_modules
 js/components
 example
 *.swp
+npm-debug.log

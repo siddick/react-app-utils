@@ -1,5 +1,5 @@
 {
-  "name": "react-utils",
+  "name": "react-app-utils",
   "description": "",
   "main": "dist/index.js",
   "authors": [
@@ -8,6 +8,7 @@
   "license": "ISC",
   "moduleType": [
     "amd",
+    "umd",
     "node"
   ],
   "homepage": "",
