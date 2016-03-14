@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("react-dom"), require("react-router"));
+		module.exports = factory(require("react"), require("react-dom"), require("jquery"), require("react-router"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react", "react-dom", "react-router"], factory);
+		define(["react", "react-dom", "jquery", "react-router"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("react"), require("react-dom"), require("react-router")) : factory(root["react"], root["react-dom"], root["react-router"]);
+		var a = typeof exports === 'object' ? factory(require("react"), require("react-dom"), require("jquery"), require("react-router")) : factory(root["react"], root["react-dom"], root["jquery"], root["react-router"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_4__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_6__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -67,7 +67,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var React = __webpack_require__(2),
 	    ReactDOM = __webpack_require__(3),
-	    RR = __webpack_require__(4);
+	    requestData = __webpack_require__(4),
+	    RR = __webpack_require__(6);
 
 	function initClient(options) {
 	    var content = options.element || document.getElementById(options.elementId || 'react-content');
@@ -76,7 +77,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    ReactDOM.render(React.createElement(RR.Router, {
 	        history: RR.browserHistory
-	    }, options.routes), content);
+	    }, requestData(options.routes)), content);
 	}
 
 	module.exports = initClient;
@@ -96,9 +97,48 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var jQuery = __webpack_require__(5),
+	    React = __webpack_require__(2),
+	    RR = __webpack_require__(6),
+	    DummyComponent;
+
+	DummyComponent = React.createClass({
+	    name: 'DummyComponent',
+	    render: function () {
+	        return this.props.children;
+	    }
+	});
+
+	function requestData(location, callback) {
+	    if (!location.state && location.action === 'PUSH') {
+	        jQuery.getJSON(location.pathname + location.search, function (json) {
+	            RR.browserHistory.setState(json);
+	        });
+	    } else {
+	        callback(null, DummyComponent);
+	    }
+	}
+
+	module.exports = function (routes) {
+	    return React.createElement(RR.Route, { getComponent: requestData }, routes);
+	};
+
+
+/***/ },
+/* 5 */
 /***/ function(module, exports) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_4__;
+	module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
 
 /***/ }
 /******/ ])

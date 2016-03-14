@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "react": "^0.14",
-    "react-router": "https://cdnjs.cloudflare.com/ajax/libs/react-router/2.0.0/ReactRouter.js"
+    "react-router": "https://cdnjs.cloudflare.com/ajax/libs/react-router/2.0.0/ReactRouter.js",
+    "jquery": "^2.2.1"
   }
 }

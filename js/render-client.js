@@ -2,6 +2,7 @@
 
 var React = require('react'),
     ReactDOM = require('react-dom'),
+    requestData = require('./request-data'),
     RR = require('react-router');
 
 function initClient(options) {
@@ -11,7 +12,7 @@ function initClient(options) {
 
     ReactDOM.render(React.createElement(RR.Router, {
         history: RR.browserHistory
-    }, options.routes), content);
+    }, requestData(options.routes)), content);
 }
 
 module.exports = initClient;
