@@ -6,7 +6,7 @@ var jQuery = require('jquery'),
     DummyComponent;
 
 DummyComponent = React.createClass({
-    name: 'DummyComponent',
+    displayName: 'DummyComponent',
     render: function () {
         return this.props.children;
     }

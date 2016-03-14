@@ -107,7 +107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    DummyComponent;
 
 	DummyComponent = React.createClass({
-	    name: 'DummyComponent',
+	    displayName: 'DummyComponent',
 	    render: function () {
 	        return this.props.children;
 	    }

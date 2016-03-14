@@ -16,6 +16,7 @@
     "babel-preset-react": "^6.5",
     "babel-register": "^6.5",
     "history": "^2.0",
+    "jquery": "^2.2",
     "lodash": "^4.6",
     "mkdirp": "^0.5",
     "react": "^0.14",
@@ -23,7 +24,6 @@
     "react-router": "^2.0"
   },
   "devDependencies": {
-    "express": "^4.13.4",
-    "jquery": "^2.2.1"
+    "express": "^4.13.4"
   }
 }
