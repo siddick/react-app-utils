@@ -57,6 +57,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	module.exports.render = __webpack_require__(1);
+	module.exports.setStateMixin = __webpack_require__(7);
 
 
 /***/ },
@@ -139,6 +140,22 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = {
+	    getInitialState: function getInitialState() {
+	        return this.props.location.state || {};
+	    },
+	    componentWillReceiveProps: function (props) {
+	        this.setState(props.location.state || {} );
+	    }
+	};
+
 
 /***/ }
 /******/ ])
