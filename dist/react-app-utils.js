@@ -72,12 +72,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    RR = __webpack_require__(6);
 
 	function initClient(options) {
-	    var content = options.element || document.getElementById(options.elementId || 'react-content');
+	    var content = options.element || document.getElementById(options.elementId || 'react-content'),
+	        history = RR.browserHistory,
+	        loc = history.createLocation(location);
 
-	    RR.browserHistory.setState(options.state || JSON.parse(content.getAttribute('data-react-state')));
+	    loc.state = options.state || JSON.parse(content.getAttribute('data-react-state'));
+	    history.replace(loc);
 
 	    ReactDOM.render(React.createElement(RR.Router, {
-	        history: RR.browserHistory
+	        history: history
 	    }, requestData(options.routes)), content);
 	}
 
@@ -104,23 +107,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var jQuery = __webpack_require__(5),
 	    React = __webpack_require__(2),
-	    RR = __webpack_require__(6),
-	    DummyComponent;
-
-	DummyComponent = React.createClass({
-	    displayName: 'DummyComponent',
-	    render: function () {
-	        return this.props.children;
-	    }
-	});
+	    RR = __webpack_require__(6);
 
 	function requestData(location, callback) {
 	    if (!location.state && location.action === 'PUSH') {
 	        jQuery.getJSON(location.pathname + location.search, function (json) {
-	            RR.browserHistory.setState(json);
+	            location.state = json;
+	            RR.browserHistory.replace(location);
 	        });
 	    } else {
-	        callback(null, DummyComponent);
+	        callback();
 	    }
 	}
 

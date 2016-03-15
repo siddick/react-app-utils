@@ -6,7 +6,7 @@ module.exports = {
     output: {
         libraryTarget: 'umd',
         path: __dirname + '/dist',
-        filename: 'index.js'
+        filename: 'react-app-utils.js'
     },
     externals: [/^[a-z]/]
 }
