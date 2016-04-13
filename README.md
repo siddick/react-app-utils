@@ -1,17 +1,19 @@
-React Utils
-===========
+React App Utils
+===============
 
 Usage:
 ------
 
 ```sh
-npm install react-utils react react-router --save
+npm install react-app-utils react react-router --save
 ```
 
 Server side rendering:
 
 ```js
-app.use(new reactUtils.reactRender({
+var reactAppUtils = require('react-app-utils');
+
+app.use(new reactAppUtils.reactRender({
    src: 'views/',
    layout: 'layout',
    routes: 'routes'
